@@ -1,0 +1,9 @@
+pandas~=1.5.2
+Flask~=2.2.2
+python-dotenv~=0.21.0
+SQLAlchemy~=1.4.46
+mysql-connector-python~=8.0.32
+marshmallow~=3.19.0
+PyJWT~=2.6.0
+wraps~=0.2.0
+Werkzeug~=2.2.2
