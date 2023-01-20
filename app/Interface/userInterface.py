@@ -9,7 +9,7 @@ class UserInteface(ABC):
     def getUserAll(self):
         pass
 
-    def getUser(self):
+    def getUser(self, email):
         pass
 
     @abstractmethod
