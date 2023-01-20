@@ -1,5 +1,5 @@
 from dotenv import load_dotenv
-from flask import Flask, Response, request, jsonify
+from flask import Flask, Response, request, jsonify, json
 from flask_marshmallow import Marshmallow as mrs
 from flask_sqlalchemy import SQLAlchemy
 import mysql.connector
