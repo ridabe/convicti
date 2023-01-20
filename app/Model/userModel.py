@@ -2,6 +2,7 @@ from app import db, mm
 from sqlalchemy import Column, Integer, String, Boolean
 from werkzeug import generate_password_hash, check_password_hash
 
+
 class User(db.Model):
     __table__ = 'usuario'
 
@@ -13,12 +14,14 @@ class User(db.Model):
     nivel = db.Column(db.Integer)
 
     def to_json(self):
-        return {'id': self.id, 'nome': self.nome, 'unidade_id': self.unidade_id, 'email': self.email, 'senha': self.senha, 'nivel': self.nivel}
+        return {'id': self.id, 'nome': self.nome, 'unidade_id': self.unidade_id, 'email': self.email,
+                'senha': self.senha, 'nivel': self.nivel}
 
 
-    class UserSchema(mm.Schema):
-        class Meta:
-            fields = ('id', 'nome', 'unidade_id', 'email', 'nivel')
+class UserSchema(mm.Schema):
+    class Meta:
+        fields = ('id', 'nome', 'unidade_id', 'email', 'nivel')
 
-    user_share_schema = UserSchema()
-    users_share_schema = UserSchema(many=True)
+
+user_share_schema = UserSchema()
+users_share_schema = UserSchema(many=True)
