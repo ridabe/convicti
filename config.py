@@ -8,7 +8,7 @@ DEBUG = True
 
 APPNAME = "Convicti"
 
-SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://root:root@localhost:3306/sales_control"
+SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://root:root@localhost:3306/sale_control"
 SQLALCHEMY_TRACK_MODIFICATIONS = True
 
-SECRET_KEY = key
+SECRET_KEY = 'qwertyuiopasdfghjklzxcvbnm123456'

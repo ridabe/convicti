@@ -25,10 +25,10 @@ def token_required(f):
 
         try:
             token_pure = token.replace("Bearer", "")
-            decoded = jwt.decode(token_pure, app.config['SECRETE_KEY'], algorithms="HS256")
+            decoded = jwt.decode(token_pure, app.config['SECRET_KEY'], algorithms="HS256", options={"verify_signature": False})
             current_user = User.query.get(decoded['id'])
         except:
-            return jsonify({"error": "token inválido."}), 403
+            return jsonify({"error": "Falha na autenticação "}), 403
 
         return f(current_user=current_user, *args, **kwargs)
 

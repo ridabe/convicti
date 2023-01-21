@@ -20,26 +20,21 @@ class UserRepository(userInterface.UserInteface, ABC):
             payload = {
                 "id": user_json["id"],
                 "email": user_json["email"],
-                "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=120)
+                "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=30)
             }
-            token = jwt.encode(payload, app.config['SECRETE_KEY'])
+            token = jwt.encode(payload, app.config['SECRET_KEY'], algorithm="HS256")
             return jsonify({
                 "token": token
             })
-        return jsonify({"messae": 'could not verify', 'www-authenticate': 'Basic auth="Login required"'}), 403
+        return jsonify({"message": 'could not verify', 'www-authenticate': 'Basic auth="Login required"'}), 403
 
     def getUserAll(self):
         user_object = User.query.all()
         user_json = [user.to_json() for user in user_object]
         return user_json
 
-    def getUser(self, email):
-        user_object = User.query.filter(email=email).first()
-        user_json = user_object.to_json()
-        return user_json
-
-    def geUserById(self,id):
-        user_object = User.query.filter(id=id).first()
+    def geUserById(self, id):
+        user_object = User.query.get(id)
         user_json = user_object.to_json()
         return user_json
 

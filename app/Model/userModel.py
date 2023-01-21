@@ -1,10 +1,10 @@
 from app import db, mm
 from sqlalchemy import Column, Integer, String, Boolean
-from werkzeug import generate_password_hash, check_password_hash
+import werkzeug
 
 
 class User(db.Model):
-    __table__ = 'usuario'
+    __tablename__ = 'usuario'
 
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(100))

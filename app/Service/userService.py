@@ -1,6 +1,7 @@
 from typing import Type
 from app.Interface import userInterface
 from app import app, request, json
+from wraps import panic
 
 
 class UserService:
@@ -14,10 +15,6 @@ class UserService:
     def getUserAll(self):
         users = self.__repository.getUserAll(self)
         return users
-
-    def getUser(self, email):
-        user = self.__repository.getUser(self, email)
-        return user
 
     def getUserById(self, id):
         user = self.__repository.geUserById(self, id)

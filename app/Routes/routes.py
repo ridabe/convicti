@@ -1,6 +1,7 @@
 from app import app, request
-from app.Controller import userController
+from app.Controller import userController, saleController
 from app import authenticate
+
 
 @app.route('/auth', methods=['POST'])
 def auth():
@@ -8,12 +9,23 @@ def auth():
     email = request.json['email']
     return userController.get_auth(email, senha)
 
+
 @app.route('/')
 @authenticate.token_required
 def get_user_all(current_user):
-    return userControl.get_user_all()
+    return userController.get_user_all()
 
-@app.route('/user/<email>')
+
+@app.route('/user/<id>')
 @authenticate.token_required
-def get_user(email, current_user):
-    return userController.get_user(email)
+def get_user_by_id(id, current_user):
+    return userController.get_user_by_id(id)
+
+#Rotas para vendas
+@app.route('/vendas', methods=["POST"])
+@authenticate.token_required
+def post_sale(current_user):
+    body = request.get_json()
+    response = saleController.post_sale(body)
+    return response
+
