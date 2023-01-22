@@ -14,3 +14,8 @@ def post_sale(data):
         return sale_share_schema.dumps(sale)
     except Exception as e:
         return jsonify({"error": e}), 400
+
+def get_sales(current_user):
+    get_sales = SaleService(SaleRepository)
+    get_sale = get_sales.get_sales(current_user)
+    return get_sale

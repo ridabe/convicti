@@ -9,6 +9,8 @@ class Venda(db.Model):
     vendedor_id = db.Column(db.Integer)
     unidade_id = db.Column(db.Integer)
     diretoria_id = db.Column(db.Integer)
+    lat = db.Column(db.String)
+    lon = db.Column(db.String)
 
     def to_json(self):
         return {
@@ -16,15 +18,23 @@ class Venda(db.Model):
                 'valor_venda': self.valor_venda,
                 'vendedor_id': self.vendedor_id,
                 'unidade_id': self.unidade_id,
-                'diretoria_id': self.diretoria_id
+                'diretoria_id': self.diretoria_id,
+                'lat': self.lat,
+                'lon': self.lon
         }
 
 
 class SaleSchema(mm.Schema):
     class Meta:
-        fields = ('id', 'valor_venda', 'vendedor_id', 'unidade_id', 'diretoria_id')
+        fields = ('id', 'data_venda', 'valor_venda', 'vendedor_id', 'unidade_id', 'diretoria_id', 'lat', 'lon')
+
+class SaleSchemaGet(mm.Schema):
+    class Meta:
+        fields = ('id', 'data_venda', 'valor_venda', 'vendedor_id', 'vendedor', 'unidade_id', 'unidade', 'diretoria_id', 'nome_diretoria', 'lat', 'lon')
 
 
+sale_share_schema_get = SaleSchemaGet()
+sales_share_schema_get = SaleSchemaGet(many=True)
 sale_share_schema = SaleSchema()
 sales_share_schema = SaleSchema(many=True)
 
