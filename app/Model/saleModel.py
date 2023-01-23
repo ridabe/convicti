@@ -9,8 +9,12 @@ class Venda(db.Model):
     vendedor_id = db.Column(db.Integer)
     unidade_id = db.Column(db.Integer)
     diretoria_id = db.Column(db.Integer)
-    lat = db.Column(db.String)
-    lon = db.Column(db.String)
+    lat_origin = db.Column(db.String)
+    lon_origin = db.Column(db.String)
+    unidade_proxima = db.Column(db.Integer)
+    lat_close_origin = db.Column(db.String)
+    lon_close_origin = db.Column(db.String)
+    tag_roming = db.Column(db.Boolean)
 
     def to_json(self):
         return {
@@ -19,18 +23,22 @@ class Venda(db.Model):
                 'vendedor_id': self.vendedor_id,
                 'unidade_id': self.unidade_id,
                 'diretoria_id': self.diretoria_id,
-                'lat': self.lat,
-                'lon': self.lon
+                'lat_origin': self.lat,
+                'lat_origin': self.lon,
+                'unidade_proxima': self.unidade_proxima,
+                'lat_close_origin': self.lat_close_origin,
+                'lon_close_origin': self.lon_close_origin,
+                'tag_roming': self.tag_roming
         }
 
 
 class SaleSchema(mm.Schema):
     class Meta:
-        fields = ('id', 'data_venda', 'valor_venda', 'vendedor_id', 'unidade_id', 'diretoria_id', 'lat', 'lon')
+        fields = ('id', 'data_venda', 'valor_venda', 'vendedor_id', 'unidade_id', 'diretoria_id', 'lat_origin', 'lon_origin', 'unidade_proxima', 'lat_close_origin', 'lon_close_origin', 'tag_roming')
 
 class SaleSchemaGet(mm.Schema):
     class Meta:
-        fields = ('id', 'data_venda', 'valor_venda', 'vendedor_id', 'vendedor', 'unidade_id', 'unidade', 'diretoria_id', 'nome_diretoria', 'lat', 'lon')
+        fields = ('id', 'data_venda', 'valor_venda', 'vendedor_id', 'vendedor', 'unidade_id', 'unidade', 'diretoria_id', 'nome_diretoria', 'lat_origin', 'lon_origin', 'unidade_proxima', 'lat_close_origin', 'lon_close_origin', 'tag_roming')
 
 
 sale_share_schema_get = SaleSchemaGet()

@@ -11,7 +11,7 @@ def deg2rad(degrees):
     return radians
 
 
-def getDistanceBetweenPointsNew(latitude1, longitude1, latitude2, longitude2, unit='miles'):
+def getDistanceBetweenPointsNew(latitude1, longitude1, latitude2, longitude2, unit='kilometers'):
     theta = longitude1 - longitude2
 
     distance = 60 * 1.1515 * rad2deg(

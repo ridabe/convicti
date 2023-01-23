@@ -8,6 +8,7 @@ from wraps import panic
 from app import app, json, Response, jsonify, db
 from app.Model.saleModel import Venda, sale_share_schema, sales_share_schema, sales_share_schema_get
 from app.Model.userModel import User
+from app.Model.unitMdel import UnitModel, units_share_schema, unit_share_schema
 from app.Interface import saleInterface
 from app.Dto.postSaleDto import post_sale_dto
 import datetime
@@ -116,8 +117,12 @@ class SaleRepository(saleInterface.SaleInteface, ABC):
             vendedor_id=int(data["vendedor_id"]),
             unidade_id=int(data["unidade_id"]),
             diretoria_id=int(data["diretoria_id"]),
-            lat=data['lat'],
-            lon=data['lon']
+            lat_origin=data['lat_origin'],
+            lon_origin=data['lon_origin'],
+            unidade_proxima=data['unidade_proxima'],
+            lat_close_origin=data['lat_close_origin'],
+            lon_close_origin=data['lon_close_origin'],
+            tag_roming=data['tag_roming']
         )
         try:
             db.session.add(vendas)
@@ -143,3 +148,15 @@ class SaleRepository(saleInterface.SaleInteface, ABC):
             return Get_sales_manager(id)
         elif level == VENDEDOR:
             return Get_sales_salesman(id)
+
+    def get_unit(self, diretoria_id):
+        sql = f"""select id, unidade, lat, lon from unidade where diretoria_id ={diretoria_id}"""
+        result = db.session.execute(sqlalchemy.text(sql))
+        response = json.loads(units_share_schema.dumps(result.all()))
+        return response
+
+    def get_unit_by_id(self, id):
+        sql = f"""select lat, lon from unidade where id ={id}"""
+        result = db.session.execute(sqlalchemy.text(sql))
+        response = json.loads(units_share_schema.dumps(result.all()))
+        return response

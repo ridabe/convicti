@@ -11,9 +11,10 @@ def post_sale(data):
     try:
         sales = SaleService(SaleRepository)
         sale = sales.post_sale(data)
-        return sale_share_schema.dumps(sale)
+        return {"message": "ok"}
     except Exception as e:
-        return jsonify({"error": e}), 400
+        panic(e)
+        return jsonify({"error": "nao gravou"}), 400
 
 def get_sales(current_user):
     get_sales = SaleService(SaleRepository)
