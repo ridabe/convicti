@@ -1,0 +1,86 @@
+{
+	"info": {
+		"_postman_id": "119c8b23-72b8-47c1-9454-47d26e35f5a8",
+		"name": "user",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9609010"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"arthur@magazineaziul.com.br\",\n    \"senha\": \"123mudar\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:5000/auth",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"auth"
+					]
+				},
+				"description": "Rota de autenticação"
+			},
+			"response": []
+		},
+		{
+			"name": "get all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:5000/",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						""
+					]
+				},
+				"description": "Recupera todos os dados de usuarios"
+			},
+			"response": []
+		},
+		{
+			"name": "User by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:5000/user/257",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"user",
+						"257"
+					]
+				},
+				"description": "Pega os usuartios pelo id"
+			},
+			"response": []
+		}
+	]
+}

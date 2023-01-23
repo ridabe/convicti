@@ -1,0 +1,82 @@
+{
+	"info": {
+		"_postman_id": "4a01c7ac-5e62-4ead-8d66-685d254d2ec4",
+		"name": "vendas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9609010"
+	},
+	"item": [
+		{
+			"name": "Post venda",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3LCJlbWFpbCI6ImFmb25zby5hZmFuY2FyQG1hZ2F6aW5lYXppdWwuY29tLmJyIiwiZXhwIjoxNjc0NDMzMTY2fQ.9pmHDy2sicwhAwVARovvXFLDsoyBRRqLDcoWH2wMDXA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"vendedor_id\": 257,\n    \"valor_venda\": 56.84,\n    \"unidade_id\": 6,\n    \"diretoria_id\": 2,\n    \"lat\": \"-15.601754458320842\",\n    \"lon\": \" -56.09832706558089\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:5000/post_vendas",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"post_vendas"
+					]
+				},
+				"description": "Salvar as vendas efetuadas"
+			},
+			"response": []
+		},
+		{
+			"name": "get_vendas",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3LCJlbWFpbCI6ImFmb25zby5hZmFuY2FyQG1hZ2F6aW5lYXppdWwuY29tLmJyIiwiZXhwIjoxNjc0MjY3MzU1fQ.V0n5iTTwSvf8nHkxQsJvn5_Q-UEMpj7aEZppCtnqxFE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "127.0.0.1:5000/get_vendas",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"get_vendas"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				},
+				"description": "Recupera as vendas seguindo as regras de visualização por permissao"
+			},
+			"response": []
+		}
+	]
+}
